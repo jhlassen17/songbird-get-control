@@ -1,0 +1,4 @@
+content  net.gfxmonk.irank  chrome/content/
+
+overlay chrome://songbird/content/xul/layoutWithBrowserOverlay.xul chrome://net.gfxmonk.irank/content/scripts-overlay.xul
+

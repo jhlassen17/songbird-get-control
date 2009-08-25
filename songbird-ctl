@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ -n "$2" ]; then
+	port="$2"
+	cmd="$1"
+else
+	if [ -n "$1" -a "$1" != "--help" ]; then
+		port=50136
+		cmd="$1"
+	else
+		echo "Usage: `basename "$0"` [port] command"
+		echo "commands: play, pause, playpause, next, prev"
+		exit 1
+	fi
+fi
+
+echo "GET: http://localhost:$port/ctl/$cmd"
+curl "http://localhost:$port/ctl/$cmd"

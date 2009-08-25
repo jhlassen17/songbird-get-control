@@ -18,6 +18,8 @@ songbird_GET_control.controller = function(){
 	};
 
 	var ctl = {
+		// this is where all the useful functions are defined.
+		// core() returns the sbIMediacoreManager instance.
 		play: function() {
 			core().playbackControl.play();
 		},
@@ -36,7 +38,7 @@ songbird_GET_control.controller = function(){
 
 		playpause: function() {
 			var c = core();
-			log("play status is: " + c.status.state);
+			//log("play status is: " + c.status.state);
 			if(c.status.state == 1) { // playing
 				c.playbackControl.pause();
 			} else {
@@ -46,6 +48,11 @@ songbird_GET_control.controller = function(){
 	};
 	return ctl;
 }();
+
+
+
+// ----------------------------------------------
+// server stuff (fairly boring, moderately hacky)
 
 songbird_GET_control.server = (function(){
 	var log = songbird_GET_control.log;
@@ -57,10 +64,8 @@ songbird_GET_control.server = (function(){
 		ver: "0.1",
 
 		start: function() {
-			log(server);
 			server.port = Application.prefs.get("extensions.GET-control.port").value,
 			log("port: " + server.port);
-			log(server._listener);
 			if(server._socket) server.stop();
 
 			server._listener._server = server;
@@ -68,8 +73,6 @@ songbird_GET_control.server = (function(){
 			server._socket.init(server.port, true, -1); // loopback only
 			server._socket.asyncListen(server._listener);
 			log("Server started successfully. Listening to port " + server.port);
-			log(server._socket);
-			log(server._listener);
 		},
 
 		stop: function() {
@@ -169,7 +172,7 @@ songbird_GET_control.server = (function(){
 					if(reason) server.write(": " + reason);
 				}
 			};
-			log("REQUEST: " + req);
+			//log("REQUEST: " + req);
 			var command = req.match(/GET \/ctl\/([^ ]+) /)[1];
 			log("GOT ctl command: " + command);
 			controller[command]();

@@ -92,7 +92,7 @@ songbird_GET_control.server = (function(){
 
 			onSocketAccepted: function(serverSocket, transport)
 			{
-				log("onSocketAccepted");
+				//log("onSocketAccepted");
 				var istream = transport.openInputStream(transport.OPEN_BLOCKING, 0, 0);
 				var ostream = transport.openOutputStream(transport.OPEN_BLOCKING, 0, 0);
 				var sis = Components.classes["@mozilla.org/scriptableinputstream;1"].createInstance(Components.interfaces.nsIScriptableInputStream);

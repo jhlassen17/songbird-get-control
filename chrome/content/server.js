@@ -86,15 +86,16 @@ songbird_GET_control.server = (function(){
 		ver: "0.1",
 
 		start: function() {
-			server.port = Application.prefs.get("extensions.GET-control.port").value,
+			server.port = Application.prefs.get("extensions.GET-control.port").value;
 			log("port: " + server.port);
 			if(server._socket) server.stop();
 
 			server._listener._server = server;
+			var loopbackOnly = Application.prefs.get("extensions.GET-control.localonly").value;
 			server._socket = Components.classes["@mozilla.org/network/server-socket;1"].createInstance(Components.interfaces.nsIServerSocket);
-			server._socket.init(server.port, true, -1); // loopback only
+			server._socket.init(server.port, loopbackOnly, -1);
 			server._socket.asyncListen(server._listener);
-			log("Server started successfully. Listening to port " + server.port);
+			log("Server started successfully. Listening to port " + server.port + " " + (loopbackOnly ? "for localhost" : "for ALL hosts"));
 		},
 
 		stop: function() {

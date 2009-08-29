@@ -35,6 +35,28 @@ songbird_GET_control.controller = function(){
 		pause: function() {
 			core().playbackControl.pause();
 		},
+		
+		stop: function() {
+			core().playbackControl.stop();
+		},
+		
+		volumeup: function() {
+			core().volumeControl.volume = core().volumeControl.volume +0.1;
+		},
+		
+		volumedown: function() {
+			core().volumeControl.volume = core().volumeControl.volume -0.1;
+		},
+		
+		mute: function() {
+			if (core().volumeControl.mute == true) {
+				core().volumeControl.mute = false;
+			}
+			
+			else {
+				core().volumeControl.mute = true;
+			}
+		},
 
 		playpause: function() {
 			var c = core();

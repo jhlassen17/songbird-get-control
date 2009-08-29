@@ -9,7 +9,7 @@ else
 		cmd="$1"
 	else
 		echo "Usage: `basename "$0"` [port] command"
-		echo "commands: play, pause, playpause, next, prev"
+		echo "commands: play, pause, playpause, next, prev, stop, volumeup, volumedown, mute"
 		exit 1
 	fi
 fi

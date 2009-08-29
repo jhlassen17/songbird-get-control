@@ -5,9 +5,9 @@
     <em:id>get-control@gfxmonk.net</em:id>
     <em:type>2</em:type>
     <em:name>GET control</em:name>
-    <em:version>0.1</em:version>
+    <em:version>0.2</em:version>
     <em:creator>Tim Cuthbertson (gfxmonk)</em:creator>
-
+    <em:contributor>Antoine Turmel (GeekShadow)</em:contributor>
     <em:description>Control songbird via GET requests</em:description>
 
     <em:targetApplication>
